@@ -6,7 +6,8 @@ public class UngDungChuyenDoiTienTe {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int tuyChon;
-        double tienTe, chuyenDoi;
+        double tienTe;
+        double  chuyenDoi;
         System.out.println(" Nhập 1 chuyển đổi USD thành VNĐ\n " +
                 "Nhập 2 chuyển đổi VNĐ sang USD");
         tuyChon = scanner.nextInt();
