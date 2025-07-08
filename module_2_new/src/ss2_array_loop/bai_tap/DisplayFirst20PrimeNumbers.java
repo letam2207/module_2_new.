@@ -5,8 +5,8 @@ public class DisplayFirst20PrimeNumbers {
         int demSo = 0;
         int soNguyenTo = 2;
         System.out.println("20 số nguyên tố đầu tiên là :");
+        boolean kiemTra = true;
         while (demSo <= 20) {
-            boolean kiemTra = true;
             for (int i = 2; i < soNguyenTo; i++) {
                 if (soNguyenTo % i == 0) {
                     kiemTra = false;

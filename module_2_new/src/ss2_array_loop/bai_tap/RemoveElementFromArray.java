@@ -10,10 +10,10 @@ public class RemoveElementFromArray {
         for (int i : array) System.out.print(i + ", ");
         System.out.println();
         int num;
+        boolean found = false;
         while (true) {
             System.out.print("Nhập phần tử muốn xóa: ");
             num = scanner.nextInt();
-            boolean found = false;
             for (int i : array) {
                 if (i == num) {
                     found = true;
