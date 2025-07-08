@@ -5,7 +5,8 @@ import java.util.Scanner;
 public class RemoveElementFromArray {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int[] array = {1, 3, 4, 2, 6, 12, 9, 45};
+        int[] array = {1, 3, 4, 2, 6, 12, 9, 45
+        };
         System.out.print("Mảng ban đầu: ");
         for (int i : array) System.out.print(i + ", ");
         System.out.println();
