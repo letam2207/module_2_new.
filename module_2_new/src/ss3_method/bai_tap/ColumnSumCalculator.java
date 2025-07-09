@@ -3,23 +3,29 @@ package ss3_method.bai_tap;
 import java.util.Scanner;
 
 public class ColumnSumCalculator {
-    public static void main(String[] args) {
+    public static int[][] inputArray(int row, int column) {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Nhập số hàng: ");
-        int row = scanner.nextInt();
-        System.out.print("Nhập số cột: ");
-        int column = scanner.nextInt();
         int[][] array = new int[row][column];
+
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < column; j++) {
                 System.out.print("Nhập giá trị tại [" + i + "][" + j + "]: ");
                 array[i][j] = scanner.nextInt();
             }
         }
+        return array;
+    }
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Nhập số hàng: ");
+        int row = scanner.nextInt();
+        System.out.print("Nhập số cột: ");
+        int column = scanner.nextInt();
+        int[][] myArray = inputArray(row, column);
         System.out.println("Mảng vừa nhập là:");
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < column; j++) {
-                System.out.print(array[i][j] + "\t");
+                System.out.print(myArray[i][j] + "\t");
             }
             System.out.println();
         }
@@ -30,7 +36,7 @@ public class ColumnSumCalculator {
         } else {
             int sum = 0;
             for (int i = 0; i < row; i++) {
-                sum += array[i][columnIndex];
+                sum += myArray[i][columnIndex];
             }
             System.out.println("Tổng các số ở cột " + columnIndex + " là: " + sum);
         }
