@@ -48,12 +48,18 @@ public class Fan {
     public void setColor(String color) {
         this.color = color;
     }
+    @Override
     public String toString() {
-        return "Fan{" +
-                "speed=" + speed +
-                ", status=" + status +
-                ", radius=" + radius +
-                ", color='" + color + '\'' +
-                '}';
+        if (status) {
+            return "Fan is on: " +
+                    "speed = " + speed +
+                    ", color = " + color +
+                    ", radius = " + radius;
+        } else {
+            return "Fan is off: " +
+                    "color = " + color +
+                    ", radius = " + radius;
+        }
     }
+
 }
