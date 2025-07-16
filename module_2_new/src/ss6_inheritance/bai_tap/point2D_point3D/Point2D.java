@@ -28,8 +28,10 @@ public class Point2D {
     public void setY(float y) {
         this.y = y;
     }
-    public float[] setXY(float x,float y){
-        return new float[]{x,y};
+
+    public void setXY(float x, float y) {
+        this.x = x;
+        this.y = y;
     }
     public float[] getXY(){
         return new float[2];
