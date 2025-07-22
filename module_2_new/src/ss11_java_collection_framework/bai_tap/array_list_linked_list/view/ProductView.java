@@ -1,19 +1,16 @@
 package ss11_java_collection_framework.bai_tap.array_list_linked_list.view;
 
 import ss11_java_collection_framework.bai_tap.array_list_linked_list.entity.Product;
-import ss11_java_collection_framework.bai_tap.array_list_linked_list.service.IProductService;
-import ss11_java_collection_framework.bai_tap.array_list_linked_list.service.ProductService;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class ProductView {
-
-    private static final IProductService productService = new ProductService();
     private static final Scanner scanner = new Scanner(System.in);
 
+
     public static void displayProduct(List<Product> products) {
-        if (products.isEmpty()) {
+        if (products == null || products.isEmpty()) {
             System.out.println("Danh sách sản phẩm trống.");
         } else {
             for (Product p : products) {
@@ -22,7 +19,8 @@ public class ProductView {
         }
     }
 
-    public static void addProduct() {
+
+    public static Product inputNewProduct() {
         try {
             System.out.print("Nhập ID: ");
             int id = Integer.parseInt(scanner.nextLine());
@@ -39,39 +37,43 @@ public class ProductView {
             System.out.print("Nhập mô tả: ");
             String description = scanner.nextLine();
 
-            Product product = new Product(id, name, price, quantity, description);
-            productService.add(product);
-            System.out.println("Thêm sản phẩm thành công!");
+            return new Product(id, name, price, quantity, description);
         } catch (NumberFormatException e) {
-            System.out.println("Sai định dạng. Vui lòng nhập lại!");
+            System.out.println(" Sai định dạng. Vui lòng nhập lại!");
+            return null;
         }
     }
 
-    public static void deleteProduct() {
+
+    public static int inputDeleteId() {
+        System.out.print("Nhập ID sản phẩm cần xóa: ");
         try {
-            System.out.print("Nhập ID sản phẩm cần xóa: ");
-            int id = Integer.parseInt(scanner.nextLine());
-            boolean result = productService.delete(id);
-            if (result) {
-                System.out.println("Xóa sản phẩm thành công.");
-            } else {
-                System.out.println("Không tìm thấy sản phẩm có ID: " + id);
-            }
+            return Integer.parseInt(scanner.nextLine());
         } catch (NumberFormatException e) {
-            System.out.println("Sai định dạng ID.");
+            System.out.println(" Sai định dạng ID.");
+            return -1;
         }
     }
 
-    public static void searchProduct() {
-        System.out.println("Nhập tên sản phẩm: ");
-        String name = scanner.nextLine();
-        List<Product> products = productService.findByName(name);
-        displayProduct(products);
+    public static String inputSearchName() {
+        System.out.print("Nhập tên sản phẩm cần tìm: ");
+        return scanner.nextLine();
     }
 
-    public static void updateProduct(Product product) {
+    public static int inputUpdateId() {
+        System.out.print("Nhập ID sản phẩm cần cập nhật: ");
+        try {
+            return Integer.parseInt(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println(" Sai định dạng ID.");
+            return -1;
+        }
+    }
+
+
+    public static Product updateProductInfo(Product oldProduct) {
         System.out.println("===== CẬP NHẬT SẢN PHẨM =====");
-        System.out.println("Sản phẩm hiện tại: " + product);
+        System.out.println("Sản phẩm hiện tại: " + oldProduct);
 
         System.out.print("Nhập tên mới: ");
         String newName = scanner.nextLine();
@@ -81,8 +83,8 @@ public class ProductView {
         try {
             newPrice = Double.parseDouble(scanner.nextLine());
         } catch (NumberFormatException e) {
-            System.out.println(" Giá không hợp lệ. Hủy cập nhật.");
-            return;
+            System.out.println("Giá không hợp lệ. Hủy cập nhật.");
+            return null;
         }
 
         System.out.print("Nhập số lượng mới: ");
@@ -90,52 +92,15 @@ public class ProductView {
         try {
             newQuantity = Integer.parseInt(scanner.nextLine());
         } catch (NumberFormatException e) {
-            System.out.println(" Số lượng không hợp lệ. Hủy cập nhật.");
-            return;
+            System.out.println("Số lượng không hợp lệ. Hủy cập nhật.");
+            return null;
         }
 
         System.out.print("Nhập mô tả mới: ");
         String newDescription = scanner.nextLine();
 
-
-        product.setName(newName);
-        product.setPrice(newPrice);
-        product.setQuantity(newQuantity);
-        product.setDescription(newDescription);
-
-
-        productService.updateById(product.getId(), product);
-
-        System.out.println(" Cập nhật thành công!");
+        return new Product(oldProduct.getId(), newName, newPrice, newQuantity, newDescription);
     }
 
 
-    public static void arrangeProduct() {
-        boolean check = true;
-        while (check) {
-            List<Product> products = productService.findAll();
-            System.out.println("""
-                    1. Sắp xếp tăng dần theo giá
-                    2. Sắp xếp giảm dần theo giá
-                    3. Thoát
-                    """);
-            System.out.print("Nhập lựa chọn: ");
-            int choice = Integer.parseInt(scanner.nextLine());
-            switch (choice) {
-                case 1:
-                    products.sort((p1, p2) -> Double.compare(p1.getPrice(), p2.getPrice()));
-                    displayProduct(products);
-                    break;
-                case 2:
-                    products.sort((p1, p2) -> Double.compare(p2.getPrice(), p1.getPrice()));
-                    displayProduct(products);
-                    break;
-                case 3:
-                    check = false;
-                    break;
-                default:
-                    System.out.println("Vui lòng nhập đúng lựa chọn.");
-            }
-        }
-    }
 }
