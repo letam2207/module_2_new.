@@ -70,8 +70,7 @@ public class ProductController {
     }
 
     public static void update() {
-        System.out.print("Nhập ID sản phẩm cần sửa: ");
-        int idUpdate = Integer.parseInt(scanner.nextLine());
+        int idUpdate = ProductView.inputUpdateId();
 
         Product oldProduct = productService.findById(idUpdate);
         if (oldProduct == null) {
@@ -139,7 +138,6 @@ public class ProductController {
                     System.out.println("Vui lòng nhập đúng lựa chọn.");
             }
         }
-
     }
 
 }
