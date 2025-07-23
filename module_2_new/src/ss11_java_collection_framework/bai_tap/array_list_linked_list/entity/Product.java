@@ -60,12 +60,13 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", price=" + price +
-                ", quantity=" + quantity +
-                ", description='" + description + '\'' +
-                '}';
+        return "\n------------------------------" +
+                "\nID: " + id +
+                "\nTên sản phẩm: " + name +
+                "\nGiá: " + price +" $"+
+                "\nSố lượng: " + quantity +
+                "\nMô tả: " + description +
+                "\n------------------------------";
     }
+
 }
