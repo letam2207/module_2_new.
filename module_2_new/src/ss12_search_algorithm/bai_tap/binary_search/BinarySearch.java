@@ -1,4 +1,4 @@
-package ss12_sorting_algorithm.bai_tap.binary_search;
+package ss12_search_algorithm.bai_tap.binary_search;
 
 import java.util.Scanner;
 

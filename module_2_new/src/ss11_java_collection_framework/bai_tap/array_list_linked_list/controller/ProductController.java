@@ -93,22 +93,39 @@ public class ProductController {
 
     public static void add() {
         Product newProduct = ProductView.inputNewProduct();
+
         if (newProduct != null) {
-            productService.add(newProduct);
-            System.out.println("Thêm sản phẩm thành công.");
+            int newId = newProduct.getId();
+            Product existingProduct = productService.findById(newId);
+
+            if (existingProduct != null) {
+                System.out.println("ID sản phẩm đã tồn tại. Vui lòng nhập ID khác.");
+            } else {
+                productService.add(newProduct);
+                System.out.println("Thêm sản phẩm thành công.");
+            }
+        } else {
+            System.out.println("Dữ liệu sản phẩm không hợp lệ. Đã hủy thao tác.");
         }
     }
 
+
     public static void delete() {
         int deleteId = ProductView.inputDeleteId();
-        if (deleteId != -1) {
-            boolean result = productService.delete(deleteId);
-            if (result) {
-                System.out.println("Xóa sản phẩm thành công.");
-            } else {
-                System.out.println(" Không tìm thấy sản phẩm để xóa.");
-            }
-        }
+       Product temp = productService.findById(deleteId);
+       if (temp==null){
+           System.out.println("Không tìm thấy sản phẩm");
+       }else {
+           System.out.println("Thông tin sản phẩm :"+temp.toString());
+           System.out.println("Bạn có muốn xóa sản phẩm này không nhập Y để xác nhận !");
+           String confirm = scanner.nextLine();
+           if(confirm.equals("Y")){
+               productService.delete(deleteId);
+               System.out.println("Xóa sản phẩm thành công !");
+           }else {
+               System.out.println("Đã hủy thao tác!");
+           }
+       }
     }
 
     public static void arrangeProduct() {

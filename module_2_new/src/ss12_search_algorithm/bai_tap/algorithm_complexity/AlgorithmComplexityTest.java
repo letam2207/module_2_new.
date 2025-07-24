@@ -1,4 +1,4 @@
-package ss12_sorting_algorithm.bai_tap.algorithm_complexity;
+package ss12_search_algorithm.bai_tap.algorithm_complexity;
 
 import java.util.Scanner;
 
