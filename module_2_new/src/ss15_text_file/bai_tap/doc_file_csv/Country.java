@@ -1,4 +1,4 @@
-package ss15_IO_binary_file_serialization.bai_tap.doc_file_csv;
+package ss15_text_file.bai_tap.doc_file_csv;
 
 public class Country {
     private int id;

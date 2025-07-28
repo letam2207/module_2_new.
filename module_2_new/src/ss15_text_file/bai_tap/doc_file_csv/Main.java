@@ -1,4 +1,4 @@
-package ss15_IO_binary_file_serialization.bai_tap.doc_file_csv;
+package ss15_text_file.bai_tap.doc_file_csv;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -10,7 +10,7 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        String filePath = "src/ss15_IO_binary_file_serialization/bai_tap/doc_file_csv/countries.csv";
+        String filePath = "src/ss15_text_file/bai_tap/doc_file_csv/countries.csv";
 
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;

@@ -1,4 +1,4 @@
-package ss15_IO_binary_file_serialization.bai_tap.copy_file_text;
+package ss15_text_file.bai_tap.copy_file_text;
 
 import java.io.*;
 
@@ -25,8 +25,8 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        String sourceFile = "src/ss15_IO_binary_file_serialization/bai_tap/copy_file_text/source.csv";
-        String targetFile = "src/ss15_IO_binary_file_serialization/bai_tap/copy_file_text/target.csv";
+        String sourceFile = "src/ss15_text_file/bai_tap/copy_file_text/source.csv";
+        String targetFile = "src/ss15_text_file/bai_tap/copy_file_text/target.csv";
 
         copyFileText(sourceFile, targetFile);
     }
