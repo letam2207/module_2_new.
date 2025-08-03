@@ -15,9 +15,8 @@ public class ControllerMenu {
                         1. Quản lý khách hàng
                         2. Quản lý nhân viên
                         3. Quản lý món nước
-                        4. Quản lý kho
-                        5. Mua hàng
-                        6. Thoát
+                        4. Mua hàng
+                        5. Thoát
                         """);
                 System.out.print("Chọn chức năng: ");
                 int choose = Integer.parseInt(scanner.nextLine());
@@ -34,16 +33,11 @@ public class ControllerMenu {
                     case 3:
                         DrinkController.drinkController();
                         break;
-
                     case 4:
-                        WarehouseController.customerController();
-                        break;
-
-                    case 5:
                         OrderController.orderController();
                         break;
 
-                    case 6:
+                    case 5:
                         System.out.println(" Đã thoát chương trình.");
                         System.exit(0);
 
